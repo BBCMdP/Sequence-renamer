@@ -1,10 +1,16 @@
 # Sequence-renamer
+
 Accesory script to homogenize sequence IDs in multifasta files 
 
 Different fasta file sources come with headers (this is, the sequences ID or description line) with an wide variety of formats. Indeed, often times headers may contain unusual characters, or even whitespaces, that may result in a hellish experience with downstream applications. In this sense, is quite usual to find different issues: some applications may trim the headers upon a given character (such as hmmer does with withespaces), change characters (e.g., PhyML changes "." by "_") or even more complicated, trim the header to a given number of characters (this is a common issue with the strict phylip format, which allows only 10 characters). 
 As such, we recommend to homogenize fasta files headers before to start the Seqrutinator pipeline, including MUFASA (and, why not, as a general rule whatsoever). To do so, we provide the `seq_renamer.py` script
 
 The script renames each of the sequences in a fasta file with a fixed digit string (by default, of 10 characters long). The user can add a key to identify the sequences with argument `-id`, which should be a letter code for the sequences in the fasta file (for example, `-id eco` to indicate the sequences come from _Escherichia coli_). The 10 digits will be completed with increasing numbers. An output file (`file_map`) will be generated, showing the corresponding original header to each new name. 
+
+### Requirements
+Sequence renamer requires python package Biopython (https://biopython.org/). 
+Install with:
+`pip install biopython`
 
 ### Examples
 We have the proteome of _E. coli_, with 4959 entries:
