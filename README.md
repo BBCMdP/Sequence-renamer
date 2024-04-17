@@ -1,6 +1,6 @@
 # Sequence-renamer
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10949335.svg)](https://doi.org/10.5281/zenodo.10949335)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10949335.svg)](https://doi.org/10.5281/zenodo.10949335)]
 
 
 Accesory script to homogenize sequence IDs in multifasta files 
