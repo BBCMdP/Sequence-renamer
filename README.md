@@ -1,5 +1,8 @@
 # Sequence-renamer
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10949335.svg)](https://doi.org/10.5281/zenodo.10949335)
+
+
 Accesory script to homogenize sequence IDs in multifasta files 
 
 Different fasta file sources come with headers (this is, the sequences ID or description line) with an wide variety of formats. Indeed, often times headers may contain unusual characters, or even whitespaces, that may result in a hellish experience with downstream applications. In this sense, is quite usual to find different issues: some applications may trim the headers upon a given character (such as hmmer does with withespaces), change characters (e.g., PhyML changes "." by "_") or even more complicated, trim the header to a given number of characters (this is a common issue with the strict phylip format, which allows only 10 characters). 
