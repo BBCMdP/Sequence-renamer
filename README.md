@@ -7,6 +7,17 @@ Different fasta file sources come with headers (this is, the sequences ID or des
 As such, we recommend to homogenize fasta files headers before to start the Seqrutinator pipeline, including MUFASA (and, why not, as a general rule whatsoever). To do so, we provide the `seq_renamer.py` script
 
 The script renames each of the sequences in a fasta file with a fixed digit string (by default, of 10 characters long). The user can add a key to identify the sequences with argument `-id`, which should be a letter code for the sequences in the fasta file (for example, `-id eco` to indicate the sequences come from _Escherichia coli_). The 10 digits will be completed with increasing numbers. An output file (`file_map`) will be generated, showing the corresponding original header to each new name. 
+We also include the optional `-taxid` argument for the proteome's species, which will be incorporated as a third column in the file_map output.
+
+Multiple fasta files can also be processed at once. This requires an additional .tsv file (called with `-t`), with columns file, code and taxid. All fasta files should have the same extension (defined with `-ext`). For example:
+
+| file                            | code | taxid |
+|---------------------------------|------|-------|
+| Aegilops_tauschii_accepted.fa   | ata  | 37682 |
+| Acomosus_321_v3_accepted.fa     | aco  | 4615  |
+| Aofficinalis_498_V1_accepted.fa | EPAo | 4686  |
+
+The script will iterate over the fasta files in each row, and rename based on the corresponding code. The column taxid can be empty. 
 
 ### Requirements
 Sequence renamer requires python package Biopython (https://biopython.org/). 
@@ -78,5 +89,12 @@ MHAYLHCLSHSPLVGYVDPAQEVLDEVNGVIASARERIAAFSPELVVLFAPDHYNGFFYDVMPPFCLGVGATAIGDFGSA
 ```
 Note that headers in the renamed file have 15 characters long, which allows to better accomodate the index "ecoli". 
 
+
+#### Multiple files: 
+```bash
+$ python3 seq_renamer.py -t fasta_codes.tsv -ext '*.fa'
+```
+The script will iterate over all .fa files in the folder (provided they are also in the `fasta_codes.tsv` file). 
+(Note: `-l` can also be applied here, but make sure not to use `-i`). `*.fa` is the default extension.
 
  
