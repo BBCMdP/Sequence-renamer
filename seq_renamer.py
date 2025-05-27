@@ -10,6 +10,7 @@ from datetime import datetime
 import re
 import glob
 import pandas as pd
+import os
 
 startTime = datetime.now()
 
@@ -54,7 +55,7 @@ def seqs_extractor(file_fasta):
 
 #If no tsv file is provided, operate over a single fasta file indicated by -i
 if tsv_file == '':
-    real_fasta = str((fasta_file.split(".")[:-1])[0])
+    real_fasta = str('.'.join(fasta_file.split('.')[:-1]))
     if fasta_file == '':
         print(f'If you want to run the script over a single file, you must indicate the input with -i')
         exit()
@@ -71,12 +72,10 @@ if tsv_file == '':
         for i, j in zip(new_names, seqs):
             f1.write(">" + str(i) + "\n")
             f1.write(str(j) + "\n")
-    f1.close()
 
     with open(str(real_fasta) + "_file_map", "w") as f2:
         for i, j in zip(new_names, names):
             print(i, '\t', j, '\t', taxid, file=f2)
-    f2.close()
 
     print(("Execution Successful: " + str((datetime.now() - startTime))))
 else:
@@ -102,7 +101,7 @@ else:
         exit()
 
     for fasta_file_path in list_of_fastas:
-        real_fasta = str((fasta_file_path.split(".")[:-1])[0])
+        real_fasta = str('.'.join(fasta_file_path.split('.')[:-1])) 
 
         for index, row in fasta_code_df.iterrows():
             fasta = row['file']
