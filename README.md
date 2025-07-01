@@ -104,6 +104,8 @@ $ tree
 ```
 
 #### Multiple files: 
+Activation of multiple file processing is activated by assigning `-t`, indicating the name of the tsv file as already explained.
+
 ```bash
 $ python3 seq_renamer.py -t fasta_codes.tsv -ext '*.fa'
 ```
@@ -115,8 +117,8 @@ $ python3 seq_renamer.py -t fasta_codes.tsv -ext '*.fa' --new_filename code
 ```
 The output files will be renamed according to the value in column 'code' for each input. Remember that an additional column could be included with for example dedicated names for each output. 
 
-Note: 
-- `-l` can also be applied here: the value will be adjusted for each input file based on key length and input fasta sequence number.
+Notes: 
+- `-l` can also be applied here. Be aware that if `-l 0` is used, the automatic value will be adjusted for each input file based on key length and input fasta sequence number (if `-l` is > 0, the same value will be applied to all files).
 - Make sure not to use `-i`
 - `*.fa` is the default extension.
 
