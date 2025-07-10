@@ -21,9 +21,18 @@ Multiple fasta files can also be processed at once. This requires an additional 
 Note that all fasta files should have the same extension (defined with `-ext`). The script will iterate over the fasta files in each row, and rename based on the corresponding code. The column taxid can be empty. When processing multiple files, the output files can be renamed by indicating the column to use for renaming using the flag `--new_filename`.
 
 ### Requirements
-Sequence renamer requires python package Biopython (https://biopython.org/). 
+Sequence renamer requires python package Biopython (https://biopython.org/) and pandas. 
 Install with:
-`pip install biopython`
+`pip install biopython pandas`
+**Recommended**
+Use Conda to generate an environment from the provided .yml file. To do so, download the .yml file and run:
+```bash
+$ conda env update --file seq_renamer_env.yml --prune
+```
+Once environment is set up, run:
+```bash
+$ conda activate seq_renamer
+```
 
 ### Examples
 We have the proteome of _E. coli_, with 4959 entries:
